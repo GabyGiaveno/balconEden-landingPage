@@ -1,0 +1,79 @@
+---
+const AIRBNB_URL = 'https://www.airbnb.com.sv/rooms/1466095984266019111';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="mark">BALCÓN EDÉN</p>
+      <p class="addr">La Falda, Sierras de Córdoba, Argentina</p>
+    </div>
+    <nav class="footer-nav">
+      <a href="#el-lugar">El lugar</a>
+      <a href="#galeria">Galería</a>
+      <a href="#amenities">Qué incluye</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#ubicacion">Ubicación</a>
+      <a href={AIRBNB_URL} target="_blank" rel="noopener">Airbnb ↗</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="fine">
+      © {year} Balcón Edén Apart. Sitio publicitario del alojamiento —
+      reservas exclusivamente a través de Airbnb.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--pine);
+    color: var(--stone-dim);
+    padding: 3rem 0 2rem;
+  }
+  .footer-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-bottom: 1.6rem;
+    border-bottom: 1px solid rgba(169, 131, 66, 0.3);
+    margin-bottom: 1.4rem;
+  }
+  .mark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--paper);
+    margin: 0 0 0.3rem;
+  }
+  .addr {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--sage);
+  }
+  .footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem 1.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    align-content: flex-start;
+  }
+  .footer-nav a {
+    color: var(--stone-dim);
+    text-decoration: none;
+  }
+  .footer-nav a:hover {
+    color: var(--brass);
+  }
+  .fine {
+    margin: 0;
+    font-size: 0.75rem;
+    color: var(--sage);
+  }
+</style>

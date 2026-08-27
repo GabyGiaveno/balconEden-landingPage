@@ -1,0 +1,123 @@
+---
+import { Image } from 'astro:assets';
+import sofaImg from '../assets/gallery/living-sofa.jpg';
+
+const stats = [
+  { n: '2', l: 'Huéspedes' },
+  { n: '1', l: 'Dormitorio' },
+  { n: '1', l: 'Baño completo' },
+  { n: '1', l: 'Pileta compartida' },
+];
+---
+
+<section class="story" id="el-lugar">
+  <div class="wrap story-grid">
+    <div class="story-text reveal">
+      <p class="eyebrow">El lugar</p>
+      <h2 class="story-heading">Un departamento nuevo, en la mejor cuadra de Edén.</h2>
+      <p class="story-p">
+        Balcón Edén es un apart externo, con balcón y cochera propia, dentro de
+        un complejo moderno sobre la avenida principal de La Falda. Todo
+        impecable, todo nuevo: los huéspedes lo describen como <em>“un
+        lujo”</em> y destacan lo bien ubicado que está — a metros del
+        histórico Hotel Edén y a pocas cuadras del centro, en una zona
+        tranquila pero con movimiento comercial.
+      </p>
+      <dl class="stats">
+        {stats.map((s) => (
+          <div class="stat">
+            <dt>{s.n}</dt>
+            <dd>{s.l}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+
+    <div class="story-frame reveal">
+      <Image
+        src={sofaImg}
+        alt="Sala de estar con sillón verde, mesa de luz y decoración cálida"
+        widths={[480, 720, 960]}
+        sizes="(min-width: 860px) 46vw, 90vw"
+        format="webp"
+        quality={80}
+      />
+      <p class="frame-caption">Living — sillón, mesa y TV smart</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="railing"></div></div>
+
+<style>
+  .story {
+    padding: 5.5rem 0 4rem;
+    background: var(--stone);
+  }
+  .story-grid {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+  .story-heading {
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+    margin: 0.9rem 0 1.4rem;
+    max-width: 16ch;
+  }
+  .story-p {
+    max-width: 52ch;
+    color: var(--pine-soft);
+    font-size: 1.08rem;
+  }
+  .story-p em {
+    font-style: italic;
+    color: var(--clay);
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem 2rem;
+    margin: 2.2rem 0 0;
+    max-width: 30rem;
+  }
+  .stat {
+    border-top: 1px solid rgba(169, 131, 66, 0.4);
+    padding-top: 0.6rem;
+  }
+  .stat dt {
+    font-family: var(--font-display);
+    font-size: 1.9rem;
+    color: var(--clay);
+    margin: 0;
+  }
+  .stat dd {
+    margin: 0.15rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sage);
+  }
+  .story-frame {
+    border: 1px solid var(--brass);
+    padding: 0.6rem;
+    background: var(--paper);
+  }
+  .story-frame img {
+    width: 100%;
+    height: auto;
+  }
+  .frame-caption {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin: 0.6rem 0.2rem 0.2rem;
+  }
+  @media (min-width: 860px) {
+    .story-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

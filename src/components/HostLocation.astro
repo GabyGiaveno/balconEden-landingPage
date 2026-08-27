@@ -1,0 +1,93 @@
+---
+const AIRBNB_URL = 'https://www.airbnb.com.sv/rooms/1466095984266019111';
+---
+
+<section class="hl" id="ubicacion">
+  <div class="wrap hl-grid">
+    <div class="hl-col reveal">
+      <p class="eyebrow">Tu anfitriona</p>
+      <h2>María Laura</h2>
+      <p class="hl-p">
+        Los huéspedes repiten lo mismo en cada evaluación: atenta, cálida y
+        siempre disponible. Instrucciones claras para el check-in,
+        flexibilidad con los horarios cuando hizo falta, y recomendaciones de
+        lugares para conocer en la zona — todo para que la estadía sea simple
+        de principio a fin.
+      </p>
+    </div>
+
+    <div class="hl-col reveal">
+      <p class="eyebrow">Dónde estás</p>
+      <h2>Sobre Av. Edén, a pasos de todo.</h2>
+      <p class="hl-p">
+        La Falda es uno de los pueblos serranos más lindos de Córdoba, y este
+        apart está en el mejor punto: sobre la avenida principal, a metros del
+        Hotel Edén y a pocas cuadras del centro, los bares y las sierras.
+        Tranquilo para descansar, cerca para moverte a pie.
+      </p>
+      <div class="pin-row">
+        <svg class="pin" width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+          <path d="M17 3C11.5 3 7 7.4 7 12.8C7 19.9 17 31 17 31C17 31 27 19.9 27 12.8C27 7.4 22.5 3 17 3Z" stroke="#A98342" stroke-width="1.6"/>
+          <circle cx="17" cy="12.8" r="4" stroke="#B5602F" stroke-width="1.6"/>
+        </svg>
+        <p class="pin-note">
+          La dirección exacta se comparte al confirmar la reserva en Airbnb.
+        </p>
+      </div>
+      <a class="btn btn-clay-outline" href={AIRBNB_URL} target="_blank" rel="noopener">
+        Consultar fechas en Airbnb →
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="railing"></div></div>
+
+<style>
+  .hl {
+    padding: 5.5rem 0 4rem;
+    background: var(--stone);
+  }
+  .hl-grid {
+    display: grid;
+    gap: 3rem;
+  }
+  .hl-col h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin: 0.9rem 0 1.1rem;
+  }
+  .hl-p {
+    color: var(--pine-soft);
+    max-width: 42ch;
+    margin: 0 0 1.2rem;
+  }
+  .pin-row {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-bottom: 1.6rem;
+  }
+  .pin-note {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    color: var(--sage);
+    margin: 0;
+    max-width: 28ch;
+  }
+  .btn-clay-outline {
+    border-color: var(--clay);
+    color: var(--clay);
+    background: transparent;
+  }
+  .btn-clay-outline:hover {
+    background: var(--clay);
+    color: var(--paper);
+    transform: translateY(-2px);
+  }
+  @media (min-width: 860px) {
+    .hl-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

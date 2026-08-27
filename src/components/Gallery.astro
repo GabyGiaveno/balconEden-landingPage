@@ -1,0 +1,121 @@
+---
+import { Image } from 'astro:assets';
+import exterior from '../assets/gallery/building-exterior.jpg';
+import sunset from '../assets/gallery/balcony-sunset.jpg';
+import kitchen from '../assets/gallery/kitchen.jpg';
+import bedroom from '../assets/gallery/bedroom.jpg';
+import pool from '../assets/gallery/pool.jpg';
+import vanity from '../assets/gallery/bathroom-vanity.jpg';
+import day from '../assets/gallery/balcony-day.jpg';
+import shower from '../assets/gallery/bathroom-shower.jpg';
+
+const photos = [
+  { src: exterior, alt: 'Frente del edificio moderno donde está el departamento', label: 'Edificio', tall: false },
+  { src: sunset, alt: 'Balcón al atardecer con vista a Av. Edén y las sierras', label: 'Balcón · atardecer', tall: true },
+  { src: kitchen, alt: 'Cocina equipada con heladera, microondas y anafe', label: 'Cocina', tall: false },
+  { src: bedroom, alt: 'Dormitorio con cama matrimonial y cuadro de hojas', label: 'Dormitorio', tall: false },
+  { src: pool, alt: 'Pileta compartida del complejo con reposeras', label: 'Pileta del complejo', tall: false },
+  { src: vanity, alt: 'Baño con bacha de mármol y secador de pelo', label: 'Baño', tall: false },
+  { src: day, alt: 'Balcón de día con sillones de mimbre', label: 'Balcón · de día', tall: true },
+  { src: shower, alt: 'Ducha con mampara de vidrio y toallas', label: 'Ducha', tall: false },
+];
+---
+
+<section class="gallery" id="galeria">
+  <div class="wrap">
+    <div class="gallery-head reveal">
+      <p class="eyebrow">Cada ambiente</p>
+      <h2>Como se ve, así se vive.</h2>
+      <p class="gallery-quote">“Es tal cual las fotos.” — Lucía, huésped</p>
+    </div>
+
+    <div class="grid">
+      {photos.map((p) => (
+        <figure class:list={['cell', 'reveal', { tall: p.tall }]}>
+          <Image
+            src={p.src}
+            alt={p.alt}
+            widths={[360, 540, 720]}
+            sizes="(min-width: 860px) 30vw, 90vw"
+            format="webp"
+            quality={76}
+          />
+          <figcaption>{p.label}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="railing"></div></div>
+
+<style>
+  .gallery {
+    padding: 5rem 0 4rem;
+    background: var(--stone);
+  }
+  .gallery-head {
+    max-width: 40rem;
+    margin-bottom: 2.5rem;
+  }
+  .gallery-head h2 {
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+    margin: 0.9rem 0 1rem;
+  }
+  .gallery-quote {
+    font-style: italic;
+    color: var(--sage);
+    margin: 0;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+  }
+  .cell {
+    margin: 0;
+    position: relative;
+    border: 1px solid var(--brass);
+    background: var(--paper);
+    padding: 0.4rem;
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .cell img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  .cell.tall img {
+    aspect-ratio: 3 / 4;
+  }
+  .cell:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 26px -14px rgba(31, 46, 39, 0.35);
+  }
+  .cell figcaption {
+    position: absolute;
+    left: 0.9rem;
+    bottom: 0.7rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: rgba(31, 46, 39, 0.72);
+    padding: 0.25rem 0.55rem;
+  }
+  @media (min-width: 640px) {
+    .grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .cell.tall {
+      grid-row: span 2;
+    }
+    .cell.tall img {
+      aspect-ratio: auto;
+      height: 100%;
+    }
+  }
+</style>

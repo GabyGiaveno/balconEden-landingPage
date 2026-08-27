@@ -1,0 +1,174 @@
+/* ============================================================
+   BALCÓN EDÉN — design tokens
+   Paleta sacada de las fotos reales: verde pino de los eucaliptos,
+   piedra de las galerías, terracota de la luz de atardecer en el
+   balcón, latón del mimbre. Nada de beige-papel + serif + terracota
+   "de IA": acá el fondo es piedra/pino, no crema, y el color se usa
+   con cuentagotas.
+   ============================================================ */
+
+:root {
+  --pine: #1f2e27;
+  --pine-soft: #2b3d34;
+  --sage: #4f6355;
+  --stone: #ede7da;
+  --stone-dim: #e2dbca;
+  --paper: #f6f3ea;
+  --clay: #b5602f;
+  --clay-soft: #c97a49;
+  --brass: #a98342;
+  --ink: #201d17;
+
+  --font-display: 'Archivo Expanded', 'Arial Narrow', sans-serif;
+  --font-body: 'Lora', 'Georgia', serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  --container: 1180px;
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --radius: 2px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--stone);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1.02;
+  margin: 0;
+  color: var(--pine);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.wrap {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+/* ---- railing divider — the recurring signature motif, drawn
+   from the actual glass-and-metal balcony rail in the photos:
+   a top rail with evenly spaced vertical balusters. Used between
+   sections instead of a plain <hr>. ---- */
+.railing {
+  height: 22px;
+  width: 100%;
+  border-top: 2px solid var(--brass);
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--brass) 0,
+    var(--brass) 2px,
+    transparent 2px,
+    transparent 34px
+  );
+  background-position: 8px 0;
+  opacity: 0.55;
+}
+.railing.on-dark {
+  border-top-color: var(--stone-dim);
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--stone-dim) 0,
+    var(--stone-dim) 2px,
+    transparent 2px,
+    transparent 34px
+  );
+  opacity: 0.28;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem 1.6rem;
+  border: 1px solid currentColor;
+  border-radius: var(--radius);
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+.btn-clay {
+  background: var(--clay);
+  border-color: var(--clay);
+  color: var(--paper);
+}
+.btn-clay:hover {
+  background: var(--clay-soft);
+  border-color: var(--clay-soft);
+  transform: translateY(-2px);
+}
+.btn-line {
+  background: transparent;
+  color: var(--stone);
+  border-color: rgba(246, 243, 234, 0.5);
+}
+.btn-line:hover {
+  border-color: var(--stone);
+  transform: translateY(-2px);
+}
+
+/* scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,124 @@
+---
+const reviews = [
+  {
+    name: 'Carlos Alberto',
+    from: 'La Plata, Argentina',
+    date: 'Julio 2026',
+    text: '“Excelente ubicación, muy lindo departamento, todo un lujo. Nos sentimos muy cómodos y seguros con el sistema de entradas y salidas del edificio. María Laura, muy amable y cálida, todo impecable.”',
+  },
+  {
+    name: 'Gabriel',
+    from: 'Mendoza, Argentina',
+    date: 'Mayo 2026',
+    text: '“El departamento es hermoso, al igual que el edificio, todo nuevo e impecable. Está ubicado sobre una calle principal a pocas cuadras del centro. Seguro el año próximo volveremos.”',
+  },
+  {
+    name: 'Marcos',
+    from: '9 meses en Airbnb',
+    date: 'Noviembre 2025',
+    text: '“El departamento súper cómodo, nuevo, en excelentes condiciones, y en la mejor zona de la Av. Edén. Súper práctico el acceso, tranquilo y seguro. Es tal cual las fotos.”',
+  },
+  {
+    name: 'Lucía',
+    from: '11 años en Airbnb',
+    date: 'Octubre 2025',
+    text: '“Excelente estadía, tanto por la belleza del departamento como por la zona. Muy bien equipado, todo funciona bárbaro, impecable la limpieza. Realmente súper recomendable.”',
+  },
+  {
+    name: 'Sebastián',
+    from: 'Córdoba, Argentina',
+    date: 'Agosto 2025',
+    text: '“Hermoso departamento externo con balcón y cochera. Tiene una calefacción espectacular y todo el equipamiento necesario para una pareja. Súper bien ubicado, a pocos metros del Hotel Edén.”',
+  },
+];
+---
+
+<section class="testimonials" id="opiniones">
+  <div class="wrap">
+    <div class="t-head reveal">
+      <p class="eyebrow on-dark">Lo dicen los que se quedaron</p>
+      <h2>5.0 en cada evaluación.</h2>
+      <p class="t-sub">5 estadías, 5 evaluaciones de 5 estrellas — limpieza, comunicación y ubicación al tope.</p>
+    </div>
+
+    <div class="t-scroller reveal">
+      {reviews.map((r) => (
+        <blockquote class="card">
+          <p class="quote">{r.text}</p>
+          <footer>
+            <span class="name">{r.name}</span>
+            <span class="meta">{r.from} · {r.date}</span>
+          </footer>
+        </blockquote>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    padding: 5.5rem 0;
+    background: var(--pine);
+    color: var(--stone);
+  }
+  .eyebrow.on-dark {
+    color: var(--brass);
+  }
+  .t-head h2 {
+    color: var(--paper);
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+    margin: 0.9rem 0 0.8rem;
+  }
+  .t-sub {
+    color: var(--stone-dim);
+    max-width: 46ch;
+    margin: 0 0 2.5rem;
+  }
+  .t-scroller {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(15.5rem, 1fr);
+    gap: 1.1rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    scroll-snap-type: x proximity;
+  }
+  .card {
+    margin: 0;
+    scroll-snap-align: start;
+    border: 1px solid rgba(169, 131, 66, 0.45);
+    background: var(--pine-soft);
+    padding: 1.6rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 15rem;
+  }
+  .quote {
+    font-style: italic;
+    font-size: 0.98rem;
+    line-height: 1.55;
+    color: var(--stone);
+    margin: 0 0 1.4rem;
+  }
+  .card footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    border-top: 1px solid rgba(169, 131, 66, 0.3);
+    padding-top: 0.7rem;
+  }
+  .name {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--brass);
+  }
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.04em;
+    color: var(--sage);
+  }
+</style>

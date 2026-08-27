@@ -1,0 +1,94 @@
+---
+const AIRBNB_URL = 'https://www.airbnb.com.sv/rooms/1466095984266019111';
+---
+
+<header class="site-header" id="site-header">
+  <div class="wrap bar">
+    <a href="#top" class="mark">BALCÓN EDÉN</a>
+    <nav class="nav">
+      <a href="#el-lugar">El lugar</a>
+      <a href="#galeria">Galería</a>
+      <a href="#amenities">Qué incluye</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#ubicacion">Ubicación</a>
+    </nav>
+    <a class="btn btn-clay cta-small" href={AIRBNB_URL} target="_blank" rel="noopener">
+      Ver en Airbnb
+    </a>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header');
+  const onScroll = () => {
+    if (window.scrollY > 40) {
+      header?.classList.add('is-scrolled');
+    } else {
+      header?.classList.remove('is-scrolled');
+    }
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    padding: 1.1rem 0;
+    background: transparent;
+    transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+  }
+  .site-header.is-scrolled {
+    background: rgba(31, 46, 39, 0.94);
+    backdrop-filter: blur(6px);
+    padding: 0.7rem 0;
+    box-shadow: 0 1px 0 rgba(169, 131, 66, 0.35);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  .mark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    font-size: 1rem;
+    color: var(--stone);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav {
+    display: none;
+    gap: 1.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .nav a {
+    color: var(--stone-dim);
+    text-decoration: none;
+    opacity: 0.85;
+    transition: opacity 0.2s ease, color 0.2s ease;
+  }
+  .nav a:hover {
+    opacity: 1;
+    color: var(--brass);
+  }
+  .cta-small {
+    padding: 0.6rem 1rem;
+    font-size: 0.7rem;
+    flex-shrink: 0;
+  }
+  @media (min-width: 860px) {
+    .nav {
+      display: flex;
+    }
+  }
+</style>

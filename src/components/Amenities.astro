@@ -1,0 +1,107 @@
+---
+import { Image } from 'astro:assets';
+import gamesImg from '../assets/gallery/games.jpg';
+
+const amenities = [
+  'Wifi y Smart TV con Netflix, HBO Max, Disney+ y Prime Video',
+  'Cocina equipada: heladera, anafe, microondas, cafetera y pava eléctrica',
+  'Aire acondicionado frío/calor y calefacción por radiador',
+  'Balcón privado con vista a Av. Edén',
+  'Cochera cubierta dentro del complejo',
+  'Pileta de uso compartido, con reposeras',
+  'Ingreso al edificio con sistema de acceso seguro',
+  'Ropa de cama, toallas y secador de pelo',
+  'Mesa de living con juegos para las noches de sierra',
+];
+---
+
+<section class="amenities" id="amenities">
+  <div class="wrap amenities-grid">
+    <div class="amenities-frame reveal">
+      <Image
+        src={gamesImg}
+        alt="Mesa con ajedrez, generala y naipes junto al televisor smart"
+        widths={[420, 640, 860]}
+        sizes="(min-width: 860px) 34vw, 90vw"
+        format="webp"
+        quality={80}
+      />
+      <p class="frame-caption">Para las noches de sierra</p>
+    </div>
+
+    <div class="amenities-text reveal">
+      <p class="eyebrow">Lo que incluye</p>
+      <h2>Pensado para quedarse tranquilo.</h2>
+      <ul class="list">
+        {amenities.map((a) => (
+          <li>{a}</li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="railing"></div></div>
+
+<style>
+  .amenities {
+    padding: 5rem 0 4rem;
+    background: var(--stone);
+  }
+  .amenities-grid {
+    display: grid;
+    gap: 3rem;
+    align-items: start;
+  }
+  .amenities-text h2 {
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+    margin: 0.9rem 0 1.6rem;
+    max-width: 16ch;
+  }
+  .list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0;
+  }
+  .list li {
+    padding: 0.9rem 0;
+    border-top: 1px solid rgba(169, 131, 66, 0.35);
+    color: var(--pine-soft);
+    font-size: 1.02rem;
+    position: relative;
+    padding-left: 1.4rem;
+  }
+  .list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--clay);
+  }
+  .list li:last-child {
+    border-bottom: 1px solid rgba(169, 131, 66, 0.35);
+  }
+  .amenities-frame {
+    border: 1px solid var(--brass);
+    padding: 0.6rem;
+    background: var(--paper);
+  }
+  .amenities-frame img {
+    width: 100%;
+    height: auto;
+  }
+  .frame-caption {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin: 0.6rem 0.2rem 0.2rem;
+  }
+  @media (min-width: 860px) {
+    .amenities-grid {
+      grid-template-columns: 0.85fr 1fr;
+    }
+  }
+</style>
